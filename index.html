@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Souls Of The Elements</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="topbar">
+    <div class="brand">
+      <img class="logo" src="img/logo.png" alt="Logo" />
+      <div class="brand-text">
+        <div class="brand-title">Soul Of The Elements</div>
+        <div class="brand-subtitle">Choose your path: Weapons or Elements, maybe both?</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Menu">
+      <nav class="menu">
+
+        <!-- Separator: Weapons -->
+        <div class="menu-sep" aria-hidden="true">
+          <span class="sep-line"></span>
+          <span class="sep-label">Weapons</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <!-- Melee -->
+        <a class="menu-item menu-item--weapons" href="#" data-category="melee">Melee</a>
+        <div class="submenu submenu-animated">
+          <a class="submenu-item" href="#" data-weapon="sword">Sword</a>
+          <a class="submenu-item" href="#" data-weapon="dagger">Dagger</a>
+          <a class="submenu-item" href="#" data-weapon="axe">Axe</a>
+          <a class="submenu-item" href="#" data-weapon="hammer">Hammer</a>
+          <a class="submenu-item" href="#" data-weapon="shield">Schield</a>
+          <a class="submenu-item" href="#" data-weapon="staff">Staff</a>
+        </div>
+
+        <!-- Range -->
+        <a class="menu-item menu-item--weapons" href="#" data-category="range">Range</a>
+        <div class="submenu submenu-animated">
+          <a class="submenu-item" href="#" data-weapon="bow">Bow</a>
+          <a class="submenu-item" href="#" data-weapon="crossbow">Crossbow</a>
+          <a class="submenu-item" href="#" data-weapon="wand">Wand</a>
+        </div>
+
+        <!-- Separator: Elements -->
+        <div class="menu-sep" aria-hidden="true">
+          <span class="sep-line"></span>
+          <span class="sep-label">Elements</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <!-- Elements -->
+        <a class="menu-item menu-item--elements" href="#" data-category="elements">Elements</a>
+        <div class="submenu submenu-animated">
+          <a class="submenu-item" href="#" data-weapon="fire">Fire</a>
+          <a class="submenu-item" href="#" data-weapon="water">Water</a>
+          <a class="submenu-item" href="#" data-weapon="air">Air</a>
+          <a class="submenu-item" href="#" data-weapon="earth">Earth</a>
+        </div>
+
+        <!-- Separator: Monsters -->
+        <div class="menu-sep" aria-hidden="true">
+          <span class="sep-line"></span>
+          <span class="sep-label">Monsters</span>
+          <span class="sep-line"></span>
+        </div>
+
+        <!-- Monsters -->
+        <a class="menu-item menu-item--monsters" href="#" data-category="monsters">Monsters</a>
+          <div class="submenu submenu-animated">
+            <a class="submenu-item" href="#" data-weapon="Maruder">Maruder</a>
+            <a class="submenu-item" href="#" data-weapon="Odmieniec">Odmieniec</a>
+            <a class="submenu-item" href="#" data-weapon="Abominacja">Abominacja</a>
+            <a class="submenu-item" href="#" data-weapon="Lich">Lich</a>
+          </div>
+      </nav>
+
+      <!-- Separator: professions -->
+        <div class="menu-sep" aria-hidden="true">
+          <span class="sep-line"></span>
+          <span class="sep-label">Professions</span>
+          <span class="sep-line"></span>
+        </div>
+
+      <!-- professions -->
+        <a class="menu-item menu-item--professions" href="#" data-category="professions">Professions</a>
+        <div class="submenu submenu-animated">
+          <a class="submenu-item" href="#" data-weapon="Alchemia">Alchemia</a>
+          <a class="submenu-item" href="#" data-weapon="Inżynieria">Inżynieria</a>
+          <a class="submenu-item" href="#" data-weapon="Inskrypcja">Inskrypcja</a>
+          <a class="submenu-item" href="#" data-weapon="Kowalstwo">Kowalstwo</a>
+          <a class="submenu-item" href="#" data-weapon="Kaletnictwo">Kaletnictwo</a>
+          <a class="submenu-item" href="#" data-weapon="Krawiectwo">Krawiectwo</a>
+        </div>
+      <div class="sidebar-note">
+        <div class="note-title">Random Tip</div>
+        <div class="note-text">Gdy horda zaciska pętlę, nie tnij tylko stalą – tnij przeznaczeniem.</div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <section class="panel">
+        <div class="panel-head">
+          <h1 id="contentTitle" class="content-title">
+            <span class="title-weapon">Wybierz broń z menu</span>
+            <span class="title-icon" aria-hidden="true"></span>
+          </h1>
+          <p id="contentSubtitle"></p>
+        </div>
+
+        <div id="skillsGrid" class="skills-grid" aria-live="polite">
+          <div class="placeholder">
+           <!-- <div class="placeholder-rune"></div>-->
+            <div class="placeholder-text">Ciemność szepcze… wybierz ścieżkę.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div class="footer-title">O projekcie</div>
+        <p class="footer-text">
+          Opis broni i umiejętności.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Linki</div>
+        <ul class="footer-links">
+          <li><a href="#">Regulamin</a></li>
+          <li><a href="#">Polityka prywatności</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-title">Social</div>
+        <ul class="footer-links">
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Soul Of The Elements</span>
+      <span class="footer-sep">•</span>
+      <span>Made in shadows ✦</span>
+    </div>
+  </footer>
+
+  <!-- Globalny tooltip -->
+  <div id="dfTooltip" class="df-tooltip" role="tooltip" aria-hidden="true">
+    <div class="df-tooltip-inner">
+      <div class="df-tooltip-text" id="dfTooltipText"></div>
+    </div>
+    <div class="df-tooltip-arrow" aria-hidden="true"></div>
+  </div>
+
+  <script>
+    // === OPISY DLA KAŻDEJ BRONI/ELEMENTU (TO JEST TEN “OPIS” POD TYTUŁEM) ===
+    const DESCRIPTIONS = {
+      sword: "„Wiara bywa ostrzejsza niż stal, ale ta broń wymaga dowodów oddania. Igła Pokutnika nie zna litości ani dla wroga, ani dla dzierżącego. Aby przebić pancerz przeznaczenia, musisz najpierw pozwolić, by rękojeść piła twoją krew. To nie jest narzędzie walki – to instrument bolesnej transcendencji”",
+      dagger:" ",
+      axe: "„Ten topór nie tnie – on rozrywa. Został stworzony przez obłąkanego kata, który wierzył, że szybka śmierć jest obrazą dla sprawiedliwości. Każdy cios pozostawia po sobie postrzępione płaty mięsa i gruchot kości. Mówi się, że gdy zamachniesz się nim z nienawiścią, ostrze wydaje z siebie świst przypominający astmatyczny oddech kogoś, kto dusi się we własnej krwi”",
+      hammer: "„W dawnych czasach służył do przybijania skazańców do bram miast. Przesiąkł ich agonią i nienawiścią do życia. Gwoździarz nie oferuje czystej śmierci – kolec jest zaprojektowany tak, by wchodzić głęboko pod pancerz i zahaczać o ścięgna, pozwalając użytkownikowi przyciągnąć ofiarę do siebie, prosto w objęcia nieuchronnego końca”",
+      shield: "„To nie jest tarcza dla kogoś, kto chce tylko przetrwać. To broń dla tych, którzy chcą, by wróg pożałował każdej próby ataku. Ciernie wiją się i reagują na ruch, niemal instynktownie szukając szczelin w pancerzu napastnika. Każdy cios wymierzony w tę tarczę kończy się krwawymi ranami dłoni i przedramion agresora”",
+      staff: "„Nie uderza w ciało, lecz w sumienie. Każde stuknięcie tej laski o bruk brzmi jak wyrok sądu. Dzierżący ją nekromanta lub upadły kapłan nie musi krzyczeć – kość sama wibruje energią cierpienia, sprawiając, że umarli w promieniu kilku metrów zaczynają drapać w wieka swoich trumien, chcąc dołączyć do procesji potępieńców”",
+
+      bow: "„To broń dla tych, którzy nie mają już nic do stracenia. Nie potrzebujesz do niej strzał, ale musisz być gotów oddać jej cząstkę siebie. Każdy pocisk to skondensowana nienawiść, która materializuje się w powietrzu jako szkarłatny kolec. Im bardziej jesteś skupiony, tym potężniejsze stają się pociski, jakby łuk karmił się twoją koncentracją”.",
+      crossbow: "„Nazywają ją tak, ponieważ nikt nie wychodzi ze spotkania z nią w jednym kawałku. Została zaprojektowana do przebijania pancerzy, za którymi chowają się tchórze. Nie oferuje finezji – oferuje czystą, kinetyczną destrukcję. Każdy bełt uderza z siłą taranu, wbijając ofiarę w najbliższą ścianę i przybijając ją do niej na wieczne potępienie”",
+      wand: "„To nie jest przedmiot wykonany przez rzemieślnika – to szczątek istoty, która widziała zbyt wiele. Kiedy kierujesz tę różdżkę w stronę wroga, nie celujesz tylko w jego ciało, ale w jego przyszłość. Powietrze wokół palca gęstnieje, a szeptane inkantacje brzmią jak płacz dziecka. Różdżka ta ma tendencję do drżenia, gdy w pobliżu znajduje się ktoś, kogo wkrótce czeka tragiczna śmierć”",
+
+      fire: "„Ten ogień nie płonie – on pożera z nienawiścią. Nie słychać w nim trzaskania drewna, lecz skwierczenie tłuszczu i pękających kamieni. Raz rozpalony, nie gaśnie, dopóki nie zamieni wszystkiego, co żywe, w drobny, szary popiół, który wchodzi do płuc i dusi ocalałych. To ogień, który narodził się z gniewu bóstw, a jego jedynym celem jest pozostawienie po sobie pustki”",
+      water: "„W tych falach nie ma litości. Woda jest tak czysta, że wydaje się błękitna jak stal, ale to barwa śmierci. Uderzenie tej wody o burtę statku brzmi jak uderzenie młota. Nie utoniesz tu z braku tchu – twoje serce zatrzyma się z przerażenia i zimna, zanim zdążysz wypuścić pierwsze bąbelki powietrza. To żywioł, który zamienia krew w lód, a krzyk w bezużyteczny sople”",
+      air: "„To nie jest ruch mas powietrza, to zbiorowy wrzask tych, którzy utknęli pomiędzy życiem a śmiercią. Wiatr ten nie tylko targa ubraniem; on tnie skórę jak tysiące małych ostrzy i wyrywa myśli z głowy. Słyszysz w nim imiona swoich zmarłych bliskich i obietnice potępienia. Kiedy Wichura Rozpaczonych uderza w miasto, psy wyją z przerażenia, a ogień gaśnie, jakby bał się zostać zdmuchniętym w niebyt”",
+      earth: "„Góry te nie powstały z ruchów tektonicznych, lecz z zastygłej rozpaczy świata. Skała jest tu twarda jak stal, a jej krawędzie tną jak brzytwy. Wewnątrz jaskiń echo nie powraca – ściany zdają się pić każdy dźwięk i każde słowo. Kiedy stoisz pod sklepieniem z Milczącej Skały, czujesz fizyczny ciężar nad sobą, jakby góra tylko czekała na moment słabości, by z mściwą satysfakcją zamienić cię w krwawą plamę na posadzce”",
+    
+      Maruder: "'Słyszysz ten dźwięk? To nie wiatr gra w ruinach. To brzęk zardzewiałych medali na piersi Marudera. Kiedy go zobaczysz, będzie już za późno na gardę – on nie chce Twojego honoru, on chce Twoich ścięgien.' Maruder to nie jest zwykły rzezimieszek. To ludzki szczur, który przetrwał w miejscu, gdzie paść powinny całe armie. To przeciwnik, którego nie boisz się dlatego, że może cię zabić jednym ciosem – boisz się go, bo zanim zdążysz go trafić, zdąży cię oślepić, okraść i zostawić krwawiącego na pastwę padlinożerców.",
+      Odmieniec: "'Rozmawialiśmy z wartownikiem przy bramie przez dziesięć minut. Dopiero gdy kapitan klepnął go w ramię, a jego głowa obróciła się o nienaturalne 180 stopni bez mrugnięcia okiem, zrozumieliśmy, że prawdziwy wartownik leży martwy w rowie od godziny. Bełt trafił kapitana chwilę później. Strzelec nawet nie drgnął.' Odmieniec to mistrz niepokojącego kamuflażu. Z daleka wygląda jak przeciętny człowiek – szary płaszcz, kaptur, typowa sylwetka. Jednak gdy podejdziesz bliżej, dostrzegasz, że coś jest bardzo nie tak. Jego skóra jest zbyt gładka, niemal woskowata, jak u drogiej lalki. Oczy rzadko mrugają i zdają się nie mieć głębi, odbijając światło jak płaskie lustra. Jego ruchy są zbyt płynne, pozbawione ludzkich mikrod, lub przeciwnie – zastyga w bezruchu na całe godziny, jak gargulec. Nie poci się, nie drży z zimna, a jego oddech jest tak płytki, że niemal niezauważalny. W jego obecności robi się zimno, a zwierzęta instynktownie jeżą sierść.",
+      Abominacja: "'Widziałem, jak rycerz w pełnej płycie uderzył ją dwuręcznym mieczem prosto w pierś. Ostrze weszło na dłoń głęboko w gnijące mięśnie. Abominacja nawet nie mrugnęła. Po prostu powoli położyła swoją dłoń – wielką jak bochen chleba – na jego głowie i zaczęła zaciskać palce. Dźwięk pękającego hełmu prześladuje mnie do dziś.' Abominacja to góra skatowanej materii. To nie jest jeden organizm, lecz makabryczny kolaż zszytych ze sobą ciał, przerośniętych guzami mięśni i wystających, połamanych kości, które służą za naturalne kolce. Jej skóra ma barwę sinego marmuru, jest twarda jak garbowana skóra i wiecznie wilgotna od ropy.",
+      Lich: "Śmierć jest dla słabych. Prawdziwa potęga zaczyna się tam, gdzie kończy się bicie serca, a zaczyna panowanie woli. Spójrz w jego puste oczodoły i zrozum, że dla niego jesteś tylko surowcem na kolejnego sługę. Licz to nie tylko nekromanta, który oszukał śmierć – to istota, która stała się jej właścicielem. W hierarchii mroku zajmuje miejsce najwyższe: jest generałem, rzeźbiarzem ciał i niszczycielem dusz w jednym. To 'mózg' każdej plagi, który rzadko brudzi sobie ręce walką w zwarciu, woląc dyrygować chaosem z bezpiecznej odległości.",
+
+      Alchemia: "Alchemik nie jest mędrcem w czystej szacie, lecz zgarbionym desperatem o pożółkłych palcach i wzroku mącącym się od oparów rtęci. To sztuka wymuszonej transmutacji, gdzie życie płaci się życiem. Eliksiry rzadko leczą bez skutków ubocznych – częściej mutują tkankę, pozwalając widzieć w ciemnościach kosztem własnych źrenic lub dając nadludzką siłę, która po godzinie rozrywa ścięgna.",
+      Inżynieria: "W krainie, gdzie magia jest kapryśna, stal i para stają się nową religią. Inżynier to kowal skomplikowanych, zgrzytających koszmarów. Tworzy pułapki, które nie tylko zabijają, ale rozszarpują, oraz mechaniczne protezy zastępujące utracone w walce kończyny. Jego wynalazki rzadko są piękne – to ciężkie, pordzewiałe konstrukcje, które dymią czarnym mazutem i wyją metalicznym echem w pustych korytarzach lochów.",
+      Inskrypcja: "Słowa mają moc, ale w tym świecie ta moc parzy. Inskrybent nie przepisuje ksiąg – on więzi mroczne eony na pergaminie wykonanym z ludzkiej skóry. Każda runa, którą kreśli, zdaje się pulsować własnym rytmem, a błąd w jednym znaku może sprowadzić na czytelnika szaleństwo. To zawód dla tych, którzy nie boją się szeptów z otchłani i chcą naginać rzeczywistość za pomocą zakazanych glifów.",
+      Kowalstwo: "Kowal to nie rzemieślnik, to pan cierpienia stali. Praca przy palenisku to walka z oporną materią, która nie chce zostać uformowana. Oręż wychodzący spod jego młota jest ciężki, surowy i głodny krwi. Pancerze kute w głębokich kuźniach mają chronić przed pazurami bestii, których nazwy boisz się wypowiedzieć, a każda blizna na napierśniku opowiada historię przegranej bitwy",
+      Kaletnictwo: "Kaletnik wie o ciele więcej niż niejeden medyk. W świecie, gdzie metal jest drogi i ciężki, skóra staje się wybawieniem. Jednak nie jest to zwykła garbarnia. Kaletnik potrafi oprawić martwe monstra, wykorzystując ich naturalną odporność na magię czy ogień. Jego warsztat śmierdzi śmiercią i konserwantami, a on sam nosi fartuch sztywny od zaschniętego osocza, szyjąc pancerze, które wciąż zdają się czuć ból.",
+      Krawiectwo: "Nie daj się zwieść igle i nitce. Krawiec w tym świecie to tkacz przeznaczenia i okultyzmu. Szyje szaty dla magów i całuny dla tych, którzy muszą wrócić zza grobu. Wplata w materiał srebrne nici dla ochrony przed duchami lub wyszywa wzory, które mącą wzrok napastnika. Jego ubrania nie służą do ozdoby – to tekstylne tarcze, nasączone ochronnymi olejami i szeptanymi inkantacjami."
+
+        };
+
+    // === TUTAJ PODMIENIASZ IKONY DLA TYTUŁU (OBOK NAZWY) ===
+    // Jeśli chcesz własne pliki: np. "img/sword.png" itp.
+    // Jak nie podasz, włączy się domyślna runa.
+    const TITLE_ICONS = {
+       sword: "img/weapon/sword.png",
+       dagger: "img/weapon/daggers.png",
+       axe: "img/weapon/axe.png",
+       hammer: "img/weapon/hammer.png",
+       shield: "img/weapon/shield.png",
+       staff: "img/weapon/staff.png",
+       bow: "img/weapon/bow.png",
+       crossbow: "img/weapon/crossbow.png",
+       wand: "img/weapon/wand.png",
+       fire: "img/books/fire.png",
+       water: "img/books/water.png",
+       air: "img/books/air.png",
+       earth: "img/books/earth.png",
+    };
+
+    const ICONS = {
+      // ===== Melee =====
+      sword: [
+        { name: "???", desc: "Wciągasz powietrze jak katafalkowy dzwon i wykonujesz niszczycielski, szeroki zamach po łuku — ostrze rozcina mgłę, mięśnie i stal z jednakową pogardą. Uderzenie niesie ciężar wyroku: kto stanie na drodze, poczuje, jak świat na chwilę traci równowagę, a ziemia drży pod stopami.", icon: "img/Weapon/Sword/Sword.png" },
+        { name: "???", desc: "Splatasz krok z obrotem i pozwalasz, by miecz zatoczył wokół ciebie krąg jak kometa w ciemnym niebie. Stal śpiewa niskim, złowieszczym tonem, a powietrze rwie się na strzępy — każdy, kto podejdzie zbyt blisko, zostaje skoszony wirującym żniwem, jakby sam Cień upomniał się o swoje." , icon: "img/Weapon/Sword/Sword.png"},
+        { name: "???", desc: "Nie dajesz przeciwnikowi nawet chwili na modlitwę. Pierwsze cięcie otwiera obronę, drugie wbija strach w kości, a trzecie stawia pieczęć na błędzie — trzy błyski stali, trzy uderzenia serca, po których zostaje tylko szarpany oddech i smak żelaza w powietrzu.", icon: "img/Weapon/Sword/Sword.png"},
+        { name: "???", desc: "Unosisz klingę wysoko, jakbyś chciał rozciąć niebo, po czym wbijasz ją w ziemię z brutalną pewnością kata. Wstrząs rozchodzi się pod powierzchnią jak przebudzony głód — a przed tobą grunt pęka i pluje szeregiem mrocznych odłamków, pocisków z kamienia i żelaza, które pędzą naprzód jak klątwa rzucona na cały horyzont." , icon: "img/Weapon/Sword/Sword.png"}
+      ],
+       dagger: [
+        { name: "???", desc: "Znikasz na ułamek sekundy, jakby świat mrugnął ze strachu — a potem jesteś już dalej, wyrwany do przodu gwałtownym pędem. Pod stopami zostaje smuga zimnego powietrza i posmak popiołu, jak po przejściu przez zakazaną szczelinę. Kto próbował cię dosięgnąć, tnie już tylko pustkę.", icon: "img/Weapon/Daggers/Daggers.png"  },
+        { name: "???", desc: "Rozchylasz dłonie, a z twoich rękawów wystrzeliwują dziesiątki sztyletów na cienkich, drgających linkach — jak pajęcza sieć utkane z żelaza i gniewu. Wirujesz wokół własnej osi, coraz szybciej, aż ostrza zataczają krąg śmierci, tnąc powietrze na strzępy i porywając wszystko, co odważy się wejść w twoją orbitę. W środku tego tańca nie ma litości — jest tylko chłodna geometria rzezi.", icon: "img/Weapon/Daggers/Daggers.png"},
+        { name: "???", desc: "Rzucasz się na cel jak cień rzucony przez płomień — bez ostrzeżenia, bez dźwięku, bez wahania. W jednej chwili jesteś daleko, w następnej twoja klinga już pracuje: kilka niemal niewidocznych cięć trafia w punkty witalne z chirurgiczną precyzją, jakbyś znał mapę ciała lepiej niż ono samo. Zanim krew zdąży znaleźć drogę na zewnątrz, przeciwnik rozumie jedno: to nie był atak — to był wyrok.", icon: "img/Weapon/Daggers/Daggers.png" },
+        { name: "???", desc: "Wskazujesz ofiarę spojrzeniem — i to wystarcza. Przestrzeń między wami pęka jak stare szkło, a ty prześlizgujesz się przez tę szczelinę bez śladu. W jednej chwili jesteś przed nim, w następnej czujesz już jego plecy na wyciągnięcie klingi. Zanim zdąży się odwrócić, w powietrzu zostaje tylko zimny dreszcz i świadomość, że polowanie właśnie się zaczęło.", icon: "img/Weapon/Daggers/Daggers.png"}
+      ],
+      axe: [
+        { name: "???", desc: "Uginają się kolana, a potem ciało wystrzeliwuje w górę jak pocisk wyrwany z grobu. Przez ułamek chwili wisisz nad polem walki — cisza przed egzekucją — po czym spadasz z impetem, który łamie wolę i kości. Topór nurkuje pierwszy: rozłupuje czaszkę pierwszego, którego dosięgnie, jakby była tylko cienką skorupą. Ziemia drży, krew pryska, a w powietrzu zostaje ciężki, metaliczny zapach końca." , icon: "img/Weapon/Axe/Axe.png"},
+        { name: "???", desc: "Zaciskasz dłonie na stylisku i obracasz się wokół własnej osi jak rozpędzony młyński kamień. Topór kreśli nisko krąg grozy, rozcinając ciała, tarcze i odwagę jednym, nieprzerwanym ruchem. Każdy, kto znajdzie się zbyt blisko, zostaje wciągnięty w wir — a gdy obrót cichnie, na ziemi zostają tylko poszarpane ślady stali i głuche echo twojego oddechu." , icon: "img/Weapon/Axe/Axe.png"},
+        { name: "???", desc: "Unosisz broń powoli, jakbyś odmierz­ał czas do egzekucji. Ten zamach nie szuka szybkości — szuka nieuchronności. Ostrze sunie horyzontalnie w ciężkim łuku, a wraz z nim idzie miażdżąca siła, która kruszy gardę, łamie kości i ucisza odwagę. Kto nie uskoczy, ten zostaje przecięty nie tylko stalą, lecz samą determinacją.", icon: "img/Weapon/Axe/Axe.png" }
+      ],
+      hammer: [
+        { name: "???", desc: "Zaczynasz obrót wolno, metodycznie — jakbyś nakręcał mechanizm dawno zapomnianej machiny tortur. Młot zatacza krąg, a każdy kolejny ruch gromadzi w nim ciężar i kinetyczną wściekłość, która narasta pod skórą jak ciśnienie przed burzą. Im dłużej trwa taniec, tym bardziej czujesz, że nie ty prowadzisz broń… tylko ona prowadzi ciebie ku uderzeniu, którego nie da się zatrzymać." , icon: "img/Weapon/Hammer/Hammer.png"},
+        { name: "???", desc: "Unosisz młot wysoko nad głowę, jakbyś chciał roztrzaskać samo sklepienie świata. Przez ułamek chwili wszystko milknie — po czym żelazo spada z hukiem, wgryzając się w ziemię jak gwóźdź w trumnę. Z miejsca uderzenia wyrywa się pęknięcie: prosta, brutalna rana w kamieniu, która mknie naprzód i rozdziera grunt, jakby pod spodem budziło się coś głodnego." , icon: "img/Weapon/Hammer/Hammer.png"},
+        { name: "???", desc: "Wbijasz broń w ziemię raz po raz, bez litości, jakbyś próbował dobić serce samego świata. Każde uderzenie wysyła przed ciebie falę wstrząsu — krótkie, brutalne eksplozje pyłu i odłamków, które rozrywają grunt w serii rosnącej furii. Ziemia jęczy, kamień pęka, a przeciwnicy czują pod stopami, że to nie pole bitwy… to grobowiec, który właśnie się zamyka." , icon: "img/Weapon/Hammer/Hammer.png"}     
+    ],
+        shield: [
+        { name: "???", desc: "Zasuwasz się za tarczą jak za drzwiami do fortecy i ruszasz naprzód, nie zwalniając nawet na oddech. Każdy krok brzmi jak wyrok, a krawędź tarczy prowadzi cię przez chaos bitwy niczym klin wbity w mięso świata. Strzały i ostrza odbijają się od metalu z martwym szczękiem — ty nie uciekasz przed zagrożeniem. Ty je taranujesz." , icon: "img/Weapon/Shield/Shield.png"},
+        { name: "???", desc: "Wyskakujesz w górę, jakbyś odrywał się od ziemi w ostatnim akcie pogardy, po czym spadasz i wbijasz krawędź tarczy w grunt z hukiem, który rozdziera ciszę. Z miejsca uderzenia wybucha fala uderzeniowa — okrąg wstrząsu, jak pieczęć wyryta w kamieniu — i unosi wrogów w powietrze niczym marionetki zerwane z niewidzialnych nici. Przez chwilę wszyscy wiszą bezradnie… zanim grawitacja dokończy resztę.", icon: "img/Weapon/Shield/Shield.png" },
+        { name: "???", desc: "Tarcza zaczyna jarzyć się posępnym blaskiem, jak rozżarzony znak wyryty na metalu. Energia oplata jej krawędzie i pulsuje w rytmie serca — nie twojego, lecz czegoś starszego i bardziej głodnego. Nadchodzące uderzenia nie trafiają już w stal… tylko znikają, wciągane w świetlistą otchłań, jakby tarcza piła cudzą przemoc i zamieniała ją w milczącą siłę." , icon: "img/Weapon/Shield/Shield.png"},
+        { name: "???", desc: "Uderzasz  w tarczę — dźwięk rozchodzi się jak dzwon na pogrzebie świata. Nie jest to zwykły hałas, tylko rozkaz wykuty w stali: wibracja wpełza pod skórę bestii, drażni ich instynkt i rozrywa resztki rozsądku. Wszystko w pobliżu odwraca łby w twoją stronę, wściekłe i ślepe, jakbyś właśnie wypowiedział ich prawdziwe imię… i przywołał je do rzezi.", icon: "img/Weapon/Shield/Shield.png" },
+        { name: "???", desc: "Robisz krok naprzód i wbijasz tarczę w przeciwnika jak kamienny blok spadający z murów cytadeli. To nie jest pchnięcie — to rozkaz dla ciała, by ustąpiło miejsca. Metal uderza z głuchym, bezlitosnym hukiem, wypychając wroga w tył, łamiąc rytm ataku i kradnąc mu oddech, jakby na moment zetknął się z samą nieuchronnością." , icon: "img/Weapon/Shield/Shield.png"}
+
+      ],
+      staff: [
+        { name: "???", desc: "Splatasz zaklęcie, a wokół ciebie pęcznieje półprzezroczysta bańka ochronna — jak kropla szkła wyjęta z mroku. Jej powierzchnia faluje runami i tłumi dźwięki świata, jakby odcinała cię od ostrzy, strachu i hałasu bitwy. Uderzenia ślizgają się po niej z głuchym jękiem, a wrogowie widzą tylko własne odbicie w krzywiźnie bariery… zanim zrozumieją, że nie mają do ciebie dostępu." , icon: "img/Weapon/Staff/Staff.png"},
+        { name: "???", desc: "Milkniesz na moment i skupiasz wolę tak mocno, że powietrze wokół zaczyna drżeć. Energia zbiera się w jednym punkcie, gęstnieje jak smoła i żar jednocześnie, aż staje się ciężka od obietnicy zniszczenia. Gdy wreszcie ją uwalniasz, z dłoni/różdżki wyrywa się wielki pocisk — prosty, bezlitosny, pędzący jak wyrok, który nie zna litości ani odwrotu." , icon: "img/Weapon/Staff/Staff.png"},
+        { name: "???", desc: "Uderzasz końcem laski o ziemię jak pieczęcią, która ma uciszyć bunt materii. W chwili kontaktu rozchodzi się pierścień czystej siły kinetycznej — niewidzialny, a jednak bezlitosny, jak fala uderzeniowa w katakumbach. Powietrze zostaje wyrwane z płuc, kurz wzbija się jak dym ofiarny, a wszyscy pobliscy wrogowie odlatują w tył, odrzuceni jak marionetki zerwane z nici." , icon: "img/Weapon/Staff/Staff.png"},
+        { name: "???", desc: "Kreślisz na ziemi znak — szybki, pewny, jakbyś podpisywał czyjś wyrok. Runa przywiera do kamienia i zaczyna pulsować mrocznym światłem, cicho sycząc, gdy energia zbiera się pod powierzchnią. Kto wejdzie w to pole, staje na grobie jeszcze zanim umrze… a gdy pieczęć pęka, następuje eksplozja, która rozrywa grunt i ciała jak złośliwy oddech Otchłani." , icon: "img/Weapon/Staff/Staff.png"},
+        { name: "???", desc: "Wbijasz laskę w podłoże, a ziemia odpowiada głuchym pomrukiem, jakby budziła się starożytna pieczęć. Wokół ciebie rozkwita sfera — półprzezroczysta, gęsta od run i drżąca od zaklętej ekonomii mocy. W jej wnętrzu mana płynie innym rytmem: zaklęcia stają się lżejsze, tańsze, jakby sama rzeczywistość dopłacała do twojej magii. To miejsce nie jest bezpieczne… jest tylko sprzyjające — i pamięta cenę, której jeszcze nie zapłaciłeś." , icon: "img/Weapon/Staff/Staff.png"}
+      ],
+
+      // ===== Range =====
+      bow: [
+        { name: "???", desc: "Przez krótką chwilę coś w twojej broni „pęka” — jakby mechanizm przeładowania został zakneblowany wolą. Cięciwa śpiewa bez przerwy, a strzały lecą seriami, jedna za drugą, szybkie jak oddech paniki. W powietrzu zostaje tylko szelest piór i zapach rozgrzanego drewna… jakbyś na moment zamienił łuk w narzędzie egzekucji, które nie zna pauzy." , icon: "img/Weapon/Bow/Bow.png"},
+        { name: "???", desc: "Naciągasz cięciwę i wypuszczasz wiązkę strzał wysoko w niebo, jak ofiarę rzuconą ku bezlitosnym gwiazdom. Przez sekundę panuje cisza — tylko echo lotu — a potem niebo otwiera się nad wybranym miejscem. Groty spadają pionowo, gęsto i bezlitośnie, wbijając się w ziemię i ciała jak grad zbrojnych modlitw, które nigdy nie miały zostać wysłuchane." , icon: "img/Weapon/Bow/Bow.png"},
+        { name: "???", desc: "Jednym, błyskawicznym ruchem rozrywasz ciszę przed sobą — cięciwa pluje trzema lub pięcioma strzałami naraz, rozchodzącymi się szerokim stożkiem jak wachlarz stalowych przekleństw. To nie jest pojedynczy strzał. To ściana grotów, która szuka mięsa, oczu i oddechu, karząc wszystko, co stanie na jej drodze." , icon: "img/Weapon/Bow/Bow.png"},
+        { name: "???", desc: "Napinasz cięciwę dłużej, niż powinno się to robić — aż włókna jęczą, a drzewce łuku drży jak żyła pod nożem. W tym przeciągniętym oddechu gromadzisz nie tylko siłę, ale i intencję. Gdy wreszcie puszczasz, strzała wyrywa się jak pocisk egzekucyjny: zyskuje nieludzką prędkość i uderza z taką mocą, że powietrze pęka za nią, a cel ma wrażenie, jakby trafił go sam wyrok." , icon: "img/Weapon/Bow/Bow.png"}
+      ],
+      crossbow: [
+        { name: "???", desc: "Zatrzymujesz oddech i poświęcasz chwilę na idealne wymierzenie, jakbyś układał świat w jednej, prostej linii. Wzrok twardnieje, palce nie drżą, a cisza staje się twoim sprzymierzeńcem. Potem naciskasz spust — kusza pluje bełtem, który leci pewnie i bezlitośnie, jakby był prowadzony przez przeznaczenie… albo przez twoją zimną pewność." , icon: "img/Weapon/Crossbow/Crossbow.png"},
+        { name: "???", desc: "Wystrzeliwujesz bełt z przymocowaną liną — stalowy haczyk losu, który nie pyta o zgodę. Gdy wgryza się w lżejszego przeciwnika, szarpnięciem ściągasz go do siebie jak zdobycz do rzeźnickiego stołu. A jeśli zaczepisz o coś cięższego — mur, filar, potwora jak wieża — wtedy to ty stajesz się pociskiem, wciągniętym po linie ku celowi, jakby sama przestrzeń zaciągnęła pętlę.", icon: "img/Weapon/Crossbow/Crossbow.png" },
+        { name: "???", desc: "Napinasz cięciwę ponad rozsądek, ładując w niej nadmiarową siłę, aż łuk jęczy jak coś żywego i przestraszonego. Gdy wypuszczasz strzał, niebo aż drga od huku — a pocisk pędzi jak wystrzał z katowskiej armaty. Cena przychodzi natychmiast: odrzut wbija cię w ziemię i cofa o dwa metry, jakby broń próbowała wyrwać ci ramiona z barków. To nie jest strzał. To krótka, brutalna katastrofa." , icon: "img/Weapon/Crossbow/Crossbow.png"},
+        { name: "???", desc: "Przez krótki czas mechanizm kuszy pracuje jak oszalały, jakby ktoś wyrwał mu hamulce i kazał karmić się gniewem. Spust klika raz — i zaraz potem znów, i znów, a bełty wylatują seriami bez pełnego przeładowania, rozszarpując powietrze suchym, trumiennym terkoczącym dźwiękiem. W tej chwili twoja kusza nie jest bronią… jest maszyną do wydawania wyroków." , icon: "img/Weapon/Crossbow/Crossbow.png"},
+        { name: "???", desc: "Zamiast jednego wyroku, przygotowujesz trzy naraz. Wciskasz do kuszy trzy bełty, ciasno jak gwoździe w trumnie, czując jak mechanizm napina się pod nienaturalnym ciężarem. Gdy puszczasz spust, stal rozchodzi się wachlarzem krótkiej zagłady — trzy ukłucia w jednej sekundzie, trzy szanse, by przeciwnik zrozumiał, że unik nie zawsze wystarcza." , icon: "img/Weapon/Crossbow/Crossbow.png"},
+        { name: "???", desc: "Odbezpieczasz granat i rzucasz go z chłodną pewnością, jakbyś składał dar w imię zniszczenia. Wiruje w powietrzu przez ułamek sekundy — mały, niepozorny kamień końca — po czym spada między wrogów. Następuje błysk, huk i deszcz odłamków, które rozszarpują ciało i ciszę równie bezlitośnie. Tam, gdzie ląduje, zostaje tylko dym, metaliczny posmak krwi i krótka lekcja: nie każda magia potrzebuje zaklęcia." , icon: "img/Weapon/Crossbow/Crossbow.png"},
+        { name: "???", desc: "Kucasz i osadzasz pułapkę w ziemi z precyzją grabarza, który zna swoje rzemiosło. Metal wtapia się w kurz i cień, a sprężyny czekają w bezruchu — cierpliwe, głodne, bezgłośne. Kiedy ktoś postawi krok w złym miejscu, ziemia „klika” jak zamykana trumna, a ofiara uczy się, że najgorsze ostrza to te, których nie widać." , icon: "img/Weapon/Crossbow/Crossbow.png"},
+        
+      ],
+      wand: [
+        { name: "???", desc: "Z twoich dłoni wyskakują dwa małe pociski energii — pierwszy jak ukłucie, drugi jak dopowiedzenie groźby. Lecą jeden po drugim w błyskawicznym rytmie, przecinając mrok jasnym, złośliwym śladem. To nie jest potęga, która miażdży… to precyzyjna złośliwość, która przypomina wrogowi, że nawet najmniejsza iskra potrafi podpalić strach.", icon: "img/Weapon/Wand/Wand.png" },
+        { name: "???", desc: "Wykonujesz krótki, energiczny gest różdżką — jakbyś przecinał powietrze znakiem zakazanym. Na ułamek chwili rozbłyska przed tobą mała bariera: cienka jak szkło, a jednak uparta jak przysięga złożona w mroku. Iskry tańczą po jej krawędziach, szepcząc, że choć jest niewielka… to potrafi ocalić życie w tej jednej, najważniejszej sekundzie.", icon: "img/Weapon/Wand/Wand.png"  },
+        { name: "???", desc: "Wskazujesz miejsce — i niebo odpowiada, jakby od dawna czekało na rozkaz. Nad celem zbiera się mroczne światło, po czym z wysokości spada pionowy grad magicznych pocisków: szybki, bezlitosny, rytmiczny jak werble na pogrzebie. Uderzenia rzeźbią ziemię w kraterach i rozszarpują to, co w nich utkwi, jakby sama rzeczywistość pluła żelazem zaklęć.", icon: "img/Weapon/Wand/Wand.png"  },
+        { name: "???", desc: "Wyrzucasz z różdżki pulsującą kulę energii, która wznosi się i opada łukiem jak meteoryt skazany na uderzenie. Zostawia za sobą smugę żaru i złowrogiego światła, a gdy dotknie ziemi lub ciała wroga — pęka z hukiem, rozkwitając eksplozją, jakby na moment otworzyła się rana w samej materii świata." , icon: "img/Weapon/Wand/Wand.png" }
+      ],
+
+      // ===== Elements =====
+      fire: [
+        { name: "Żarliwa Broń", desc: "Nasycasz swoją broń płonącą energią żywiołu ognia. Każde fizyczne uderzenie niesie ze sobą szansę wzniecenia niszczycielskiego pożaru na ciele wroga, który stopniowo trawi go płomieniami." , icon: "img/fire/Żarliwa Broń.png" },
+        { name: "Szał Spopielenia", desc: "Każdy płonący wróg w twoim otoczeniu rozpala twoją żądzę zniszczenia. Im więcej przeciwników trawionych jest ogniem, tym szybciej uderzasz, popadając w coraz głębszy szał bitewny. Stajesz się ucieleśnieniem żywego pożaru, który nie zna litości.", icon: "img/fire/Szał Spopielenia.png" },
+        { name: "Mistrz Płomieni", desc: "Osiągnąłeś mistrzostwo nad żywiołem ognia. Twoje płomienie płoną jaśniej, goręcej i bardziej niszczycielsko niż kiedykolwiek wcześniej. Każdy czar i każde podpalenie zadaje zwiększone obrażenia, czyniąc z ciebie prawdziwego władcę ognia." , icon: "img/fire/Mistrz Płomieni.png"},
+        { name: "Odporność Żywiołu", desc: "Twoje ciało zostało zahartowane przez żywioł ognia. Płomienie nie są już dla ciebie śmiertelnym zagrożeniem, a jedynie próbą siły. Zyskujesz zwiększoną odporność na obrażenia od ognia, stając się niemal niewrażliwy na jego niszczycielską moc.", icon: "img/fire/Odporność Żywiołu.png" },
+        { name: "Płonący Instynkt", desc: "Ogień wyostrza twoje zmysły i budzi drapieżny instynkt łowcy. Każdy ruch przeciwnika czytasz jak otwartą księgę, zwiększając swoje szanse na trafienia krytyczne. Gdy uderzasz, płomień prowadzi twoją rękę ku śmiertelnemu ciosowi." ,icon: "img/fire/Płonący Instynkt.png"},
+        { name: "Władza Płomieni", desc: "Gdy korzystasz z mocy ognia, żywioł całkowicie cię pochłania. Twoje ciało wypełnia płonąca energia, zwiększając prędkość ataku oraz szybkość poruszania się. W ogniu stajesz się niepowstrzymaną siłą, której nie da się zatrzymać." ,icon: "img/fire/Władza Płomieni.png"},
+        { name: "Płomienny Dotyk", desc: "Twoje dłonie i broń pulsują żarem żywiołu. Każde uderzenie niesie ze sobą szansę uwolnienia dodatkowej eksplozji ognia, która wypala ciało przeciwnika od środka. Nawet najlżejszy cios może stać się zapowiedzią piekielnego spopielenia." ,icon: "img/fire/Płomienny Dotyk.png"},
+        { name: "Ognista Gloria", desc: "Gdy zadajesz trafienie krytyczne, wokół ciebie rozbłyska aura płonącej chwały. Delikatne, lecz zabójcze płomienie otaczają twoją postać, raniąc wszystkich wrogów w pobliżu lub wzmacniając twoje ciało, zwiększając prędkość ataku bądź szybkość poruszania się. Ogień sam wybiera, czy stać się twoją bronią, czy błogosławieństwem.",icon: "img/fire/Ognista Gloria.png" },
+        { name: "Furia Spopielenia", desc: "Każdy płonący przeciwnik w twoim otoczeniu podsyca twoją żądzę zagłady. Z każdym kolejnym wrogiem trawionym ogniem twoje płomienie stają się potężniejsze, zwiększając zadawane obrażenia od ognia. Im więcej pożarów wokół ciebie, tym bliżej jesteś apokalipsy." ,icon: "img/fire/Furia Spopielenia.png"},
+        { name: "Płomienny Horyzont", desc: "Twoja kontrola nad ogniem sięga coraz dalej. Każda umiejętność obszarowa rozlewa się szerzej, pochłaniając większy fragment pola bitwy. Płomienie nie znają już granic – gdziekolwiek sięgną, pozostawiają po sobie spopieloną ziemię." ,icon: "img/fire/Płomienny Horyzont.png"},
+        { name: "Eskalacja Żaru", desc: "Każdy wróg trawiony płomieniami zasila twoją magiczną potęgę. Żar bitewny narasta w tobie z każdą kolejną ofiarą ognia, zwiększając twoją moc zaklęć i czyniąc twoje czary coraz bardziej niszczycielskimi. Im większy pożar siejesz, tym potężniejszym magiem się stajesz." ,icon: "img/fire/Eskalacja Żaru.png"},
+        { name: "Rozpalona Rzeź", desc: "Gdy wróg stoi w płomieniach, twoje ciosy stają się jeszcze bardziej zabójcze. Ataki rozdziera jego ciało, uwalniając dodatkowy wybuch ognia, który spopiela przeciwnika od środka. To taniec stali i płomieni, z którego nikt nie wychodzi żywy." ,icon: "img/fire/Rozpalona Rzeź.png"},
+        { name: "Pogrzeb w Ogniu", desc: "Gdy płonący przeciwnik pada na kolana, jego ciało staje się ognistym grobowcem. W chwili śmierci eksploduje w piekielnym wybuchu, rozrzucając płomienie we wszystkich kierunkach i raniąc każdego wroga w pobliżu. Każda ofiara staje się zapowiedzią kolejnej zagłady." ,icon: "img/fire/Pogrzeb w Ogniu.png"},
+        { name: "Rozżarzona Stal", desc: "Twoje ostrza zostają zahartowane w piekielnym żarze. Broń biała płonie nieustającym ogniem, zyskując stały bonus do obrażeń od ognia. Każde cięcie pozostawia po sobie ślad spopielenia, jakby stal została wykuta w samym sercu wulkanu." ,icon: "img/fire/Rozżarzona Stal.png"},
+        { name: "Płomienny Follow-up", desc: "Gdy zadasz trafienie krytyczne, płomień przejmuje kontrolę nad twoim następnym ciosem. Kolejny atak nieuchronnie eksploduje ognistą mocą, wypalając wroga żywiołowym żarem. To jak pieczęć losu – po krytyku nadchodzi spopielenie." ,icon: "img/Books/fire.png"},
+        { name: "Żar Życia", desc: "Każdy płomień, który wzniecasz na ciele wroga, karmi twoją życiową energię. Gdy przeciwnik zaczyna płonąć, część jego cierpienia zamienia się w twoją siłę, przywracając niewielki procent zdrowia. Ogień nie tylko niszczy – potrafi też podtrzymywać życie." ,icon: "img/fire/Żar Życia.png"},
+        { name: "Iskra Odrodzenia", desc: "Gdy twoje życie jest na skraju, przebudza się pradawna iskra przetrwania. Z twojego ciała wybucha fala ognia, automatycznie podpalając wszystkich wrogów wokół. W chwili słabości stajesz się epicentrum płomiennej zemsty – gotowy powstać z popiołów." ,icon: "img/fire/Iskra Odrodzenia.png"},
+        { name: "Młot Wulkanu", desc: "Twoje uderzenia młotem rozbijają ziemię niczym erupcja wulkanu. Stopiona skała rozlewa się pod stopami wroga, spowalniając jego ruchy i więżąc go w płonącym chaosie. Każdy cios niesie ze sobą ciężar rozżarzonego świata." ,icon: "img/fire/Młot Wulkanu.png"},
+        { name: "Płomień Frontu", desc: "Stajesz twarzą w twarz z wrogiem, a twoje płomienie rozpalają się jeszcze mocniej. Im bliżej przeciwnika walczysz, tym potężniejsze stają się twoje obrażenia od ognia. Na pierwszej linii frontu rodzi się prawdziwa potęga żywiołu." ,icon: "img/fire/Płomień Frontu.png"},
+        { name: "Wieczny Płomień", desc: "Twoje płomienie nie gasną jak zwykły ogień. Każde podpalenie trwa znacznie dłużej, powoli pożerając wroga niczym przekleństwo, którego nie da się ugasić. Raz wzniecony żar staje się wyrokiem śmierci." ,icon: "img/fire/Wieczny Płomień.png"},
+        { name: "Gniew Umierającego", desc: "Gdy twoje życie zbliża się do kresu, rodzi się w tobie niszczycielska furia. Im mniej zdrowia posiadasz, tym potężniejsze stają się twoje ataki. Na granicy śmierci odkrywasz prawdziwą siłę – ostatni gniew wojownika, który nie zna strachu." ,icon: "img/fire/Gniew Umierającego.png"},
+        { name: "Żarliwa Dyscyplina", desc: "Utrzymując pełną kontrolę nad swoją maną, osiągasz stan bojowej perfekcji. Przy maksymalnym poziomie many twoje ataki stają się znacznie potężniejsze, wypełnione czystą, płonącą energią. Jednak gdy twoje zasoby magiczne się wyczerpują, tracisz ochronę – twoja obrona słabnie, odsłaniając cię na ciosy wroga. To sztuka balansu między mocą a ryzykiem." ,icon: "img/fire/Żarliwa Dyscyplina.png"},
+        { name: "Ostatnia Pożoga", desc: "Gdy twoje ciało upada, duch ognia nie gaśnie wraz z nim. W chwili śmierci eksplodujesz potężnym wybuchem płomieni, pochłaniając wrogów w ostatnim akcie zemsty. Nawet po końcu pozostawiasz po sobie ślad zniszczenia – prawdziwy wojownik płonie do samego końca." ,icon: "img/Books/fire.png"},
+
+        
+      ],
+      water: [
+        { name: "Oczyszczenie Głębin", desc: "Twoje ataki niosą ze sobą oczyszczającą moc oceanicznych otchłani. Każde uderzenie ma szansę zmyć z ciebie negatywne efekty, niczym fala obmywająca brzeg z wszelkich skażeń. Woda staje się twoim sprzymierzeńcem, chroniąc cię przed klątwami i osłabieniami." ,icon: "img/Water/Oczyszczenie Głębin.png"},
+        { name: "Źródło Życia", desc: "W twoich żyłach płynie błogosławieństwo pradawnych wód. Twoje ciało nieustannie czerpie energię z mistycznego źródła, znacząco zwiększając naturalną regenerację życia. Każda chwila spędzona w walce staje się krokiem ku odnowie." ,icon: "img/Books/water.png"},
+        { name: "Studnia Mocy", desc: "Czerpiesz energię z bezkresnych głębin, w których skrywa się pradawna magia. Twoja mana odnawia się szybciej, jakbyś nieustannie stał nad mistyczną studnią mocy. Woda staje się nośnikiem arcanej energii, podtrzymując twoje zaklęcia bez przerwy." ,icon: "img/Water/Studnia Mocy.png"},
+        { name: "Mistrz Głębin", desc: "Oczyszczający strumień. Zdejmuje osłabienia.Osiągnąłeś pełne panowanie nad żywiołem wody. Twoje ataki niosą w sobie potęgę oceanicznych otchłani, a każdy strumień, fala i gejzer uderza z niszczycielską siłą. Zwiększone obrażenia od wody czynią cię prawdziwym władcą głębin, którego gniew jest nie do powstrzymania." ,icon: "img/Water/Mistrz Głębin.png"},
+        { name: "Odporność Żywiołu", desc: "Twoje ciało zostało zahartowane przez potęgę oceanów. Woda nie jest już dla ciebie zagrożeniem – staje się naturalnym środowiskiem, w którym poruszasz się bez strachu. Zyskujesz zwiększoną odporność na obrażenia od wody, jakbyś sam należał do głębin." ,icon: "img/Water/Odporność Żywiołu.png"},
+        { name: "Źródło Harmonii", desc: "Otaczasz się spokojem pradawnych wód, które przywracają równowagę ciału i umysłowi. Regeneracja życia oraz many zostaje znacząco zwiększona, jakbyś zanurzył się w świętym źródle harmonii. To idealna jedność siły i spokoju." ,icon: "img/Water/Źródło Harmonii.png"},
+        { name: "Płynna Swoboda", desc: "Twoje ciało porusza się jak niepowstrzymany nurt rzeki. Spowolnienia i okowy wroga tracą nad tobą władzę, a próby unieruchomienia rozpływają się jak krople deszczu w oceanie. Zyskujesz zwiększoną odporność na efekty kontroli, stając się wolny niczym żywioł, który nie zna granic." ,icon: "img/Water/Płynna Swoboda.png"},
+        { name: "Chłodna Skóra", desc: "Twoja skóra zostaje zahartowana przez przeciwstawne żywioły – lodowatą wodę i płonący ogień. Ekstremalne temperatury nie są już dla ciebie zagrożeniem. Zyskujesz zwiększoną odporność zarówno na obrażenia od wody, jak i ognia, stając się żywą barierą między dwoma światami żywiołów." ,icon: "img/Water/Chłodna Skóra.png"},
+        { name: "Potęga Przypływu", desc: "Każdy przeciwnik spowity wodą zasila twoją rosnącą potęgę. Im więcej wrogów jest przemoczonych żywiołem, tym silniejsze stają się twoje ataki wodne. Fale narastają wraz z twoją dominacją, a pole bitwy zamienia się w twoje królestwo przypływu." ,icon: "img/Water/Potęga Przypływu.png"},
+        { name: "Odbicie Przypływu", desc: "Przyzywasz ochronną siłę oceanu, która odgina tor nadlatujących pocisków. Strzały, zaklęcia i ataki dystansowe tracą swoją precyzję, rozbijając się o wodną aurę niczym fale o klify. Zmniejszasz obrażenia z dystansu, stając się bastionem wśród sztormu." ,icon: "img/Water/Odbicie Przypływu.png"},
+        { name: "Lekkość Wody", desc: "Twoje ciało porusza się z lekkością morskiej bryzy. Niczym fala omijasz nadchodzące ciosy, pozwalając im prześlizgnąć się obok bez zadania szkody. Zyskujesz szansę na unik, stając się nieuchwytny jak woda, której nie da się schwytać w dłonie." ,icon: "img/Water/Lekkość Wody.png"},
+        { name: "Horyzont Fal", desc: "Twoja kontrola nad żywiołem wody sięga coraz dalej. Każda umiejętność obszarowa rozlewa się niczym przypływ, obejmując większy fragment pola bitwy. Fale niosą twoją moc dalej, pochłaniając wrogów w niepowstrzymanym nurcie oceanu." ,icon: "img/Water/Horyzont Fal.png"},
+        { name: "Ostatni Prąd", desc: "Gdy wróg chwieje się na granicy śmierci, przyzywasz niszczycielską moc ostatniego przypływu. Twoje ataki uderzają wtedy z dodatkową siłą żywiołu wody, miażdżąc osłabionego przeciwnika niczym fala rozbijająca się o skały. To wyrok oceanu – nie ma przed nim ucieczki." ,icon: "img/Water/Ostatni Prąd.png"},
+        { name: "Ciężar Wody", desc: "Woda ciąży niczym kajdany. Przeciwnicy spowici wilgocią poruszają się coraz wolniej, jakby każdy krok wymagał przełamania oporu głębin. Zamoczeni wrogowie zostają spowolnieni, stając się łatwym celem dla twoich kolejnych ataków." ,icon: "img/Water/Ciężar Wody.png"},
+        { name: "Narastający Nurt", desc: "Każde kolejne uderzenie wzmacnia twoją ofensywę niczym fala, która narasta przed uderzeniem w brzeg. Im dłużej atakujesz tego samego przeciwnika, tym potężniejsze stają się twoje ciosy. To niepowstrzymany prąd, który z czasem zmienia się w niszczycielski żywioł." ,icon: "img/Water/Narastający Nurt.png"},
+        { name: "Morska Stal", desc: "Twoje ostrza zostają nasycone potęgą oceanu. Broń biała zadaje dodatkowe obrażenia od wody, a każdy cios uderza niczym przypływ rozbijający się o skalisty brzeg. Stal płynie w rytmie fal, a twoje ataki niosą ze sobą chłodną furię głębin." ,icon: "img/Water/Morska Stal.png"},
+        { name: "Rozbryzg", desc: "Po trafieniu krytycznym twoja broń nabiera impetu niczym rozpędzona fala. Kolejny atak uderza z ogromną siłą, rozpryskując wodę we wszystkich kierunkach i zadając obrażenia obszarowe. To eksplozja żywiołu, która nie oszczędza nikogo w pobliżu." ,icon: "img/Water/Rozbryzg.png"},
+        { name: "Płynne Uzdrowienie", desc: "Każdy wróg spowity wodą staje się źródłem twojej siły. Gdy uderzasz zamoczonych przeciwników, ich wilgoć zamienia się w życiodajną energię, stopniowo przywracając twoje zdrowie. Woda krąży między wami niczym rytuał odnowy – im więcej mokrych wrogów, tym potężniejsze uzdrowienie." ,icon: "img/Water/Płynne Uzdrowienie.png"},
+        { name: "Mana Rozpaczy", desc: "Gdy twoje życie jest bliskie wyczerpania, woda reaguje na twoją rozpacz. Strumień magicznej energii zaczyna płynąć szybciej, znacząco zwiększając regenerację many. Na granicy śmierci odnajdujesz nową siłę – głębinową determinację do walki." ,icon: "img/Water/Mana Rozpaczy.png"},
+        { name: "Morski Impuls", desc: "Po rzuceniu zaklęcia w twojej broni kumuluje się energia oceanu. Następny atak uwalnia ją w potężnym uderzeniu, zadając dodatkowe obrażenia wodne. To jak echo zaklęcia, które powraca w formie niszczycielskiego przypływu." ,icon: "img/Water/Morski Impuls.png"},
+        { name: "Uderzenie Tsunami", desc: "Przyzywasz niszczycielską siłę oceanu i uderzasz z mocą nadciągającego tsunami. Potężna fala rozbija się o wrogów, miażdżąc ich bezlitosnym żywiołem i pozostawiając po sobie tylko chaos i spustoszenie. To gniew morza w najczystszej postaci." ,icon: "img/Water/Uderzenie Tsunami.png"},
+        { name: "Nurt Oporu", desc: "Gdy blokujesz cios tarczą, uwalniasz przeciwuderzenie wodnego żywiołu. Potężny nurt spowalnia atakującego, jakby próbował przebić się przez rwącą rzekę. Każdy, kto uderzy w twoją obronę, zostaje uwięziony w oporze głębin." ,icon: "img/Water/Nurt Oporu.png"},
+        { name: "Ciśnienie Głębin", desc: "Im bardziej zbliżasz się do wroga, tym silniej odczuwają miażdżący nacisk oceanicznych głębin. Twoja obecność spowalnia ich ruchy, jakby każdy krok musieli stawiać pod potężnym ciśnieniem wody. Na bliskim dystansie stajesz się żywą otchłanią, z której nie da się uciec." ,icon: "img/Water/Ciśnienie Głębin.png"},
+        { name: "Morska iluzja", desc: "Przywołujesz gęstą, morską mgłę, która spowija twoją postać niczym zasłona tajemnicy. Widoczność wrogów zostaje drastycznie ograniczona – ich spojrzenia błądzą, a ataki tracą precyzję. W oparach wilgoci stajesz się cieniem fal, nieuchwytnym i zdradliwym jak sztormowa noc na otwartym morzu." ,icon: "img/Water/Morska iluzja.png"},
+        { name: "Trwała Wilgoć", desc: "Twoja władza nad wodą sprawia, że wilgoć nie znika tak łatwo. Każdy efekt „Zamoczenia” utrzymuje się znacznie dłużej, oplatając wrogów ciężarem mokrych szat i spowalniając ich ruchy. Gdziekolwiek się pojawisz, pole bitwy na długo zostaje przesiąknięte żywiołem." ,icon: "img/Books/water.png"},
+        { name: "Ostatni Przypływ", desc: "Gdy twoje życie zaczyna gasnąć, ocean odpowiada potężnym wezbraniem. Im mniej posiadasz zdrowia, tym gwałtowniejsza staje się twoja moc wodna. Na granicy śmierci przyzywasz niszczycielski przypływ, który rozrywa wrogów bez litości. To desperacka siła głębin – piękna i śmiertelna." ,icon: "img/Books/water.png"},
+        { name: "Płynna Dyscyplina", desc: "Utrzymując pełną kontrolę nad przepływem many, osiągasz stan doskonałej harmonii z żywiołem wody. Gdy twoje zasoby są pełne, twoje ataki uderzają z potęgą przypływu, zadając zwiększone obrażenia. Jednak gdy mana opada, twoja obrona słabnie – niczym cofający się nurt odsłaniający brzeg. To sztuka panowania nad równowagą między mocą a ryzykiem." ,icon: "img/Books/water.png"},
+        { name: "Zemsta Oceanu", desc: "Gdy twoje ciało pada na ziemię, ocean nie pozwala, by twoja śmierć poszła na marne. Z głębin wzbiera potężna fala, zalewając pole bitwy i miażdżąc wrogów bez litości. To ostatni akt gniewu żywiołu – przysięga, że morze zawsze upomni się o swoich wybrańców." ,icon: "img/Water/Zemsta Oceanu.png"},
+
+      ],
+      air: [
+        { name: "Impuls Powietrza", desc: "Cięcie wichru. Szybkie, dalekie uderzenie.",icon: "img/Air/Impuls Powietrza.png" },
+        { name: "Lot Przypływu", desc: "Pozwalasz, by potężny podmuch wiatru uniósł cię do przodu. Twoje kroki stają się lekkie niczym piórko niesione burzą, a ciało sunie po polu bitwy z zawrotną prędkością. Zwiększona szybkość poruszania się czyni cię nieuchwytnym jak powietrzny duch.",icon: "img/Air/Lot Przypływu.png" },
+        { name: "Zew Bitwy", desc: "Wydajesz potężny okrzyk wojenny, który niesie się wraz z podmuchem wiatru po całym polu bitwy. Duch walki rozpala twoje serce, a twoje ataki przyspieszają, jakby sam żywioł powietrza dodawał ci skrzydeł. Zwiększona szybkość ataku zamienia cię w prawdziwą burzę stali.",icon: "img/Air/Zew Bitwy.png" },
+        { name: "Mistrz Wichru", desc: "Osiągnąłeś pełne panowanie nad żywiołem powietrza. Twoje ataki tną niczym ostrza burzy, a każdy podmuch niesie ze sobą niszczycielską siłę wichru. Zwiększone obrażenia od powietrza czynią cię prawdziwym władcą niebios, przed którym nie ma ucieczki.",icon: "img/Air/Mistrz Wichru.png" },
+        { name: "Odporność Żywiołu", desc: "Twoje ciało zostało zahartowane przez nieustanny taniec wichrów. Podmuchy burzy, ostrza powietrza i niszczycielskie wichry tracą swoją moc, gdy uderzają w ciebie. Zyskujesz zwiększoną odporność na obrażenia od żywiołu powietrza, stając się niewzruszony jak oko cyklonu.",icon: "img/Air/Odporność Żywiołu.png" },
+        { name: "Lekkość Wiatru", desc: "Twoje ciało porusza się z lekkością niesioną przez podmuch burzy. Unikasz ciosów niczym liść wirujący w powietrzu, wymykając się ostrzom i zaklęciom z gracją żywiołu. Zyskujesz szansę na unik, stając się nieuchwytny jak sam wiatr.",icon: "img/Air/Lekkość Wiatru.png" },
+        { name: "Przyspieszenie Czasu", desc: "Naginając bieg czasu do własnej woli, sprawiasz, że chwile mijają szybciej. Twoje umiejętności odnawiają się w przyspieszonym tempie, jakbyś wyrywał sekundy z samego strumienia przeznaczenia. W walce zyskujesz przewagę nad tymi, którzy są więźniami zwykłego czasu.",icon: "img/Books/air.png" },
+        { name: "Rozproszenie Strzałów", desc: "Naginając bieg czasu do własnej woli, sprawiasz, że chwile mijają szybciej. Twoje umiejętności odnawiają się w przyspieszonym tempie, jakbyś wyrywał sekundy z samego strumienia przeznaczenia. W walce zyskujesz przewagę nad tymi, którzy są więźniami zwykłego czasu.",icon: "img/Books/air.png" },
+        { name: "Horyzont Wiatru", desc: "Twoja władza nad powietrzem sięga daleko poza zwykłe granice. Każdy atak i umiejętność niosą się dalej, wspierane przez potężne prądy wiatru. Ostrza burzy, podmuchy i zaklęcia dosięgają wrogów z większej odległości, jakby sam żywioł przedłużał zasięg twojej mocy.",icon: "img/Books/air.png" },
+        { name: "Zefir Koncentracji", desc: "CiWchodzisz w stan doskonałej harmonii z żywiołem powietrza. Delikatny zefir krąży wokół ciebie, uspokajając umysł i prowadząc twoje ruchy z absolutną precyzją. Umiejętności powietrza pochłaniają mniej many, jakby sam wiatr wspierał twoją wolę i oszczędzał twoją energię.ęcie",icon: "img/Air/Zefir Koncentracji.png" },
+        { name: "Wietrzny Instynkt", desc: "Wiatr wyostrza twoje zmysły i prowadzi twoje ciosy ku słabym punktom wroga. Poruszasz się instynktownie, niczym drapieżnik niesiony podmuchem burzy, zwiększając swoje szanse na trafienia krytyczne. Każde uderzenie staje się precyzyjnym podmuchem śmierci.",icon: "img/Air/Wietrzny Instynkt.png" },
+        { name: "Rozproszenie Fali", desc: "Przyzywasz wirujące prądy powietrza, które rozrywają nadchodzące fale energii. Eksplozje i ataki obszarowe tracą swoją niszczycielską siłę, rozpraszając się w chaotycznym tańcu wichrów. Dzięki temu znacznie zmniejszasz otrzymywane obrażenia, stając się bezpieczną wyspą pośród burzy.",icon: "img/Air/Rozproszenie Fali.png" },
+        { name: "Wietrzny Sus", desc: "Wiatr staje się twoim sprzymierzeńcem, unosząc cię ku niebu. Każdy skok jest wyższy, lżejszy i bardziej majestatyczny, jakbyś na chwilę zyskiwał skrzydła burzy. Pokonujesz przeszkody z gracją wichru, spoglądając na pole bitwy z góry niczym drapieżny ptak.",icon: "img/Air/Wietrzny Sus.png" },
+        { name: "Sfera Burzy", desc: "Tworzysz wokół siebie potężną sferę burzowej energii, która wzmacnia zasięg twoich umiejętności obszarowych. Podmuchy wiatru i błyskawice rozlewają się szerzej, pochłaniając większy fragment pola bitwy. Gdzie pojawia się twoja magia, tam burza nie zna granic.",icon: "img/Air/Sfera Burzy.png" },
+        { name: "Wirujące Ostrza", desc: "Każdy twój atak może uwolnić ostrze sprężonego powietrza, które wystrzeliwuje w dodatkowego przeciwnika niczym burzowy pocisk. Wirujące klingi tną wrogów z chirurgiczną precyzją, przeskakując między celami i siejąc chaos na polu bitwy. To taniec stali i wichru, którego nie da się zatrzymać.",icon: "img/Air/Wirujące Ostrza.png" },
+        { name: "Narastająca Precyzja", desc: "Z każdym kolejnym trafieniem twoje ruchy stają się coraz pewniejsze. Wiatr prowadzi twoją broń ku idealnym punktom uderzenia, wyostrzając koncentrację i instynkt zabójcy. Każdy następny cios zwiększa twoją szansę na trafienie krytyczne, aż osiągniesz perfekcję burzy.",icon: "img/Air/Narastająca Precyzja.png" },
+        { name: "Rozpęd Powietrza", desc: "Trafienie krytyczne wprawia cię w pęd burzy. Energia wiatru eksploduje w twoich żyłach, przyspieszając kolejne ciosy. Po krytyku zyskujesz zwiększoną szybkość ataku, zamieniając się w niepowstrzymany huragan ostrzy.",icon: "img/Air/Rozpęd Powietrza.png" },
+        { name: "Powietrzne Oręże", desc: "Nasycasz swoją broń żywiołem wichru. Uderzenie stali niesie ze sobą ostrze sprężonego powietrza, zadając dodatkowe obrażenia od powietrza. Twoje oręże śpiewa pieśń burzy, a wrogowie padają pod naporem niewidzialnych kling.",icon: "img/Air/Powietrzne Oręże.png" },
+        { name: "Strzał Tornada", desc: "Twoje ataki dystansowe niosą w sobie gniew burzy. Każdy strzał ma szansę przywołać miniaturową trąbę powietrzną, która wiruje wokół celu, raniąc pobliskich wrogów i siejąc chaos na polu bitwy. To jakby sam wiatr odpowiadał na twoje wezwanie, wzmacniając każdy pocisk niszczycielską mocą.",icon: "img/Air/Strzał Tornada.png" },
+        { name: "Wichrowa Penetracja", desc: "Twoje pociski nabierają prędkości burzowego wichru, przebijając się przez pancerz wrogów niczym ostrze powietrza. Strzały i zaklęcia ignorują część obrony przeciwnika, trafiając prosto w jego słabe punkty. To precyzja wiatru, która nie zna przeszkód.",icon: "img/Books/air.png" },
+        { name: "Oddech Wichru", desc: "Gdy wymykasz się ciosowi, wiatr napełnia twoje płuca życiodajną energią. Każdy udany unik pozwala ci zaczerpnąć oddechu burzy, regenerując część many. W rytmie walki i podmuchów odnajdujesz nową siłę do dalszych zaklęć.",icon: "img/Air/Oddech Wichru.png" },
+        { name: "Spokój Burzy", desc: "Gdy zatrzymujesz się w bezruchu, wkraczasz w samo serce burzy. Wokół ciebie zapada absolutna cisza, a niszczycielskie wichry omijają cię szerokim łukiem. Otrzymujesz redukcję obrażeń, stając się niewzruszonym punktem pośród chaosu – okiem cyklonu, którego nic nie jest w stanie złamać.",icon: "img/Air/Spokój Burzy.png" },
+        { name: "Podmuch Tytana", desc: "Twoje uderzenia młotem niosą siłę pradawnych tytanów. Każdy cios ma szansę wyzwolić potężny podmuch powietrza, który wyrywa wroga z ziemi i podrzuca go wysoko w niebo. To jakby sama burza wspierała twoją broń, miażdżąc przeciwników z nieziemską potęgą.",icon: "img/Air/Podmuch Tytana.png" },
+        { name: "Aegida Odrzutu", desc: "Gdy blokujesz cios tarczą, uwalniasz potężny impuls powietrza. Wróg zostaje gwałtownie odrzucony, jakby uderzył w niewidzialną ścianę wichru. Twoja obrona staje się bronią, a każdy atak przeciwnika kończy się dla niego upokarzającym cofnięciem.",icon: "img/Air/Aegida Odrzutu.png" },
+        { name: "Taniec Wiatru", desc: "Po użyciu umiejętności pozwalasz, by wiatr porwał cię w rytmie walki. Twoje ruchy stają się lekkie i płynne niczym taniec w podmuchach burzy, a prędkość poruszania się gwałtownie wzrasta. Każdy czar i każde uderzenie wprawiają cię w coraz szybszy wir bitwy.",icon: "img/Air/Taniec Wiatru.png" },
+        { name: "Furia Przetrwania", desc: "Gdy twoje życie zbliża się do kresu, budzi się instynkt przetrwania. Im mniej posiadasz zdrowia, tym szybciej wyprowadzasz kolejne ciosy, jakby sam wiatr pchał twoje ramiona do desperackiej walki. Na granicy śmierci stajesz się burzą, która nie zamierza się poddać.",icon: "img/Books/air.png" },
+        { name: "Eksplozja Wichru", desc: "Gdy twoje ciało upada, duch burzy nie pozwala odejść w ciszy. W chwili śmierci uwalniasz niszczycielską falę sprężonego powietrza, która rozrywa pole bitwy i odrzuca wszystkich wrogów w pobliżu. To ostatni krzyk żywiołu – potężny, dziki i niepowstrzymany.",icon: "img/Air/Eksplozja Wichru.png" },
+
+      ],
+      earth: [
+        { name: "Wstrząs Bojowy", desc: "Każde twoje uderzenie niesie w sobie sejsmiczną moc. Ataki fizyczne mają szansę wywołać wstrząs, który ogłusza przeciwnika, jakby ziemia zatrzęsła się pod jego stopami. Wróg traci orientację, a ty zyskujesz przewagę na polu bitwy..",icon: "img/Earth/Wstrząs Bojowy.png" },
+        { name: "Twarda Postawa", desc: " Przyjmujesz nieugiętą postawę wojownika zakorzenionego w ziemi. Twoje ciało staje się stabilne jak skała, a każdy nadchodzący cios napotyka solidną obronę. Zwiększona szansa na blok sprawia, że wrogowie rozbijają się o twoją determinację niczym fale o klif..",icon: "img/Earth/Twarda Postawa.png" },
+        { name: "Tytaniczna Witalność", desc: "W twoich żyłach płynie siła pradawnych tytanów. Twoje ciało staje się potężniejsze, a rezerwy życia znacznie się zwiększają. Jesteś jak góra – niewzruszony, wytrzymały i gotowy przetrwać każdą burzę. Każdy cios, który by powalił innych, dla ciebie jest jedynie drobnym wstrząsem..",icon: "img/Earth/Tytaniczna Witalność.png" },
+        { name: "Potęga Ziemi", desc: "Czerpiesz moc z samego serca planety. Każdy twój atak nasycony jest ciężarem skał i gniewem tektonicznych płyt. Zwiększone obrażenia od ziemi sprawiają, że twoje uderzenia miażdżą wrogów niczym lawina spadająca z górskich szczytów..",icon: "img/Earth/Potęga Ziemi.png" },
+        { name: "Odporność Żywiołu", desc: "Twoje ciało zostaje zahartowane przez siłę ziemi. Skały, gruz i sejsmiczne uderzenia tracą swoją niszczycielską moc, gdy dotykają twojej skóry. Zyskujesz zwiększoną odporność na obrażenia od żywiołu ziemi, stając się tak niewzruszony jak pradawna góra..",icon: "img/Earth/Odporność Żywiołu.png" },
+        { name: "Pancerz Kontynentu", desc: "Otaczasz się pancerzem wykutym z samej esencji kontynentu. Twoje ciało staje się twarde jak litosfera, odporne na ciosy i niszczycielskie siły wroga. Zwiększona odporność czyni cię żywą fortecą – bastionem, o który rozbijają się wszelkie ataki..",icon: "img/Earth/Pancerz Kontynentu.png" },
+        { name: "Spokój Ziemi", desc: "Gdy stoisz nieruchomo, łączysz się z odwiecznym pulsem planety. Ziemia oddaje ci swoją siłę, powoli regenerując twoje zdrowie. W bezruchu odnajdujesz harmonię – niczym pradawny monolit, który czerpie moc z samego serca świata.",icon: "img/Earth/Spokój Ziemi.png" },
+        { name: "Żelazne Ramiona", desc: "Twoje mięśnie twardnieją niczym stalowe liny, a każdy cios nabiera niszczycielskiej mocy. Broń w twoich dłoniach staje się przedłużeniem twojej siły, rozbijając wrogów z brutalną precyzją. Zwiększone obrażenia fizyczne czynią z ciebie prawdziwą machinę wojny..",icon: "img/Earth/Żelazne Ramiona.png" },
+        { name: "Zakotwiczenie", desc: "Wbijasz swoją wolę w samo serce ziemi, stając się nieporuszony niczym pradawny filar. Twoje ciało zyskuje stabilność skały – efekty przewrócenia i odrzutu zostają znacząco osłabione. Nawet najsilniejszy cios burzy nie jest w stanie cię zachwiać..",icon: "img/Earth/Zakotwiczenie.png" },
+        { name: "Naturalna Witalność", desc: "Czerpiesz siłę z samej esencji natury. Twoje ciało nieustannie odnawia się dzięki mocy ziemi, a każda chwila regeneruje twoje zdrowie niczym spokojny oddech pradawnego świata. Jesteś żywym dowodem na to, że natura zawsze znajduje sposób, by przetrwać..",icon: "img/Earth/Naturalna Witalność.png" },
+        { name: "Sejsmiczna Ekspansja", desc: "Twoja moc wstrząsa coraz większym obszarem ziemi. Każda umiejętność obszarowa rozlewa się szerzej, powodując pęknięcia, osuwiska i drżenie gruntu na ogromnym terenie. Pole bitwy staje się epicentrum twojej potęgi, a wrogowie nie mają gdzie uciec przed gniewem planety..",icon: "img/Earth/Sejsmiczna Ekspansja.png" },
+        { name: "Miażdżąca Siła", desc: "Każde twoje uderzenie niesie ciężar gór i potęgę pradawnych skał. Twoje ataki mają szansę roztrzaskać pancerz przeciwnika, odsłaniając go na kolejne niszczycielskie ciosy. Wróg czuje, jak jego obrona kruszy się pod naporem twojej tytanicznej siły..",icon: "img/Earth/Miażdżąca Siła.png" },
+        { name: "Narastająca Siła", desc: "Z każdym kolejnym uderzeniem twoja potęga narasta niczym lawina tocząca się z górskiego szczytu. Im dłużej atakujesz, tym potężniejsze stają się twoje ciosy, aż osiągniesz niszczycielską siłę zdolną kruszyć skały i miażdżyć pancerze. To niepowstrzymany marsz tytana ku zwycięstwu..",icon: "img/Earth/Narastająca Siła.png" },
+        { name: "Tektoniczny Impuls", desc: "Twoje trafienia krytyczne budzą gniew uśpionej planety. Z każdym potężnym ciosem ziemia drży pod stopami wrogów, wywołując mini-trzęsienia, które dezorientują przeciwników i niszczą ich równowagę. To echo pradawnych kataklizmów, zamknięte w sile twoich uderzeń..",icon: "img/Earth/Tektoniczny Impuls.png" },
+        { name: "Kamienne Ostrza", desc: "Nasycasz swoje oręże surową potęgą ziemi. Każde uderzenie stali zostawia po sobie ślad kruszonej skały, zadając dodatkowe obrażenia od żywiołu ziemi. Twoje bronie tną niczym odłamki gór, a wrogowie czują ciężar samej planety w każdym ciosie..",icon: "img/Earth/Kamienne Ostrza.png" },
+        { name: "Młot Tytana", desc: "Dzierżysz broń godną pradawnych tytanów. Każde uderzenie twojego młota niesie sejsmiczną moc, która wstrząsa ciałem i duchem przeciwnika. Ataki młotem mają zwiększoną szansę na ogłuszenie, sprawiając, że wrogowie padają bezwładnie pod ciężarem twojej potęgi..",icon: "img/Earth/Młot Tytana.png" },
+        { name: "Miażdżący Cios", desc: "Twoje uderzenia są niczym cios młota spadającego na skałę. Ataki przebijają się przez pancerz wroga, ignorując część jego obrony i trafiając prosto w słabe punkty. Każdy cios kruszy nie tylko zbroję, ale i pewność siebie przeciwnika..",icon: "img/Earth/Miażdżący Cios.png" },
+        { name: "Potęga Kolosa", desc: "Im potężniejsze jest twoje ciało, tym straszliwsza staje się twoja siła. Każdy punkt zdrowia wzmacnia twoje ciosy, czyniąc je ciężkimi niczym upadające góry. Gdy jesteś w pełni sił, uderzasz jak żywy kolos, którego gniew potrafi zmiażdżyć nawet najtwardszy kamień..",icon: "img/Earth/Potęga Kolosa.png" },
+        { name: "Rozłupanie Tłumu", desc: "Twoje uderzenia toporem rozdzierają pole bitwy niczym sejsmiczne pęknięcie. Każdy zamach tnie nie jednego, lecz wielu przeciwników naraz, rozrzucając ich niczym odłamki skał po eksplozji. Ataki toporem zadają obrażenia obszarowe, czyniąc z ciebie prawdziwego pogromcę hord..",icon: "img/Earth/Rozłupanie Tłumu.png" },
+        { name: "Forteca Wojownika", desc: "Każdy udany blok tarczą wzmacnia twoją obronę, niczym kolejne warstwy murów wokół twierdzy. Stajesz się nie do zdobycia – im więcej ataków powstrzymasz, tym trudniej cię zranić. Twoja postawa bojowa przypomina kamienną fortecę, której nie sposób skruszyć..",icon: "img/Earth/Forteca Wojownika.png" },
+        { name: "Strefa Ciężkości", desc: "Tworzysz obszar, w którym ziemia staje się cięższa, jakby sama grawitacja sprzysięgła się przeciw wrogom. Każdy krok wymaga od nich ogromnego wysiłku, a ich ruchy stają się powolne i ociężałe. To pole dominacji, w którym ty jesteś panem ciężaru i siły..",icon: "img/Earth/Strefa Ciężkości.png" },
+        { name: "BoŻelazna Wolajowy", desc: "Gdy twoje życie słabnie, twoja determinacja staje się niezłomna jak stal. Im mniej posiadasz zdrowia, tym silniejsza staje się twoja obrona – jakby sama ziemia wzmacniała cię w chwilach próby. Na granicy upadku odkrywasz prawdziwą potęgę przetrwania, stając się bastionem nie do złamania..",icon: "img/Earth/Żelazna Wola.png" },
+        { name: "Ciężar Energii", desc: "Gdy twoja mana osiąga maksimum, energia ziemi wypełnia twoje ciało, wzmacniając każdy cios i zwiększając zadawane obrażenia. Jednak gdy magiczne zasoby zaczynają się wyczerpywać, ciężar tej mocy spowalnia twoje ruchy. To balans pomiędzy potęgą a obciążeniem – im więcej energii posiadasz, tym groźniejszy się stajesz, lecz jej utrata ma swoją cenę..",icon: "img/Earth/Ciężar Energii.png" },
+        { name: "Bezbronna Ofiara", desc: "Gdy wróg zostaje ogłuszony, staje się łatwym celem dla twojej niszczycielskiej siły. Wykorzystujesz jego chwilę słabości, zadając mu znacznie zwiększone obrażenia. To moment bez litości – gdy przeciwnik traci kontrolę, ty wymierzasz ostateczny cios..",icon: "img/Earth/Bezbronna Ofiara.png" },
+        { name: "Narastająca Potęga", desc: "Każdy pokonany wróg zasila twoją wewnętrzną siłę. Z ich upadkiem rośnie twoja potęga, a mięśnie wypełnia pierwotna energia ziemi. Z każdą ofiarą stajesz się groźniejszy – niczym kolos, który rośnie wraz z liczbą zwycięstw..",icon: "img/Earth/Narastająca Potęga.png" },
+        
+      ],
+      //Monsters
+      Maruder: [
+        { name: "Work in progress", desc: "Work in progress" },
+      ],
+      
+      Odmieniec: [
+      { name: "Work in progress", desc: "Work in progress" },
+      ],
+      
+      Abominacja: [
+       { name: "Work in progress", desc: "Work in progress" },
+      ],
+      
+      Lich: [
+        { name: "Work in progress", desc: "Work in progress" },
+      ],
+
+      //Professions
+      Alchemia: [
+         
+      ],
+      Inżynieria: [
+        
+      ],
+      Inskrypcja: [
+         
+      ],
+      Kowalstwo: [
+        
+      ],
+      Kaletnictwo: [
+         
+      ],
+      Krawiectwo: [
+        
+      ]
+    };
+
+    // Domyślna runa do tytułu (gdy nie dasz własnych ikon w TITLE_ICONS)
+    function makeTitleRuneUri(seedText) {
+      const safe = seedText.replace(/[^a-z0-9 ]/gi, "").slice(0, 10) || "rune";
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+          <defs>
+            <radialGradient id="rg" cx="45%" cy="35%">
+              <stop offset="0%" stop-color="#e6d39b" stop-opacity="0.9"/>
+              <stop offset="70%" stop-color="#7a6340" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#120f14" stop-opacity="1"/>
+            </radialGradient>
+            <filter id="gl" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="1.2" result="b"/>
+              <feMerge>
+                <feMergeNode in="b"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <rect x="2.3" y="2.3" width="19.4" height="19.4" rx="6" fill="url(#rg)" stroke="#cbb57a" stroke-opacity="0.55"/>
+          <path d="M6 15 C9 9, 15 9, 18 15" fill="none" stroke="#cbb57a" stroke-width="1.8" filter="url(#gl)" opacity="0.95"/>
+          <path d="M8 7 L12 18 L16 7" fill="none" stroke="#cbb57a" stroke-width="1.8" opacity="0.9"/>
+          <circle cx="12" cy="11" r="1.8" fill="#0e0b10" stroke="#cbb57a" stroke-width="1.3" opacity="0.95"/>
+          <text x="12" y="22" text-anchor="middle" font-family="serif" font-size="6" fill="#cbb57a" opacity="0.65">${safe}</text>
+        </svg>
+      `.trim();
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    // Tymczasowe generowane ikonki kafelków (możesz je potem zastąpić swoimi)
+    function makeIconDataUri(seedText) {
+      const safe = seedText.replace(/[^a-z0-9 ]/gi, "").slice(0, 16);
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+          <defs>
+            <radialGradient id="g" cx="50%" cy="45%">
+              <stop offset="0%" stop-color="#d7c07a" stop-opacity="0.85"/>
+              <stop offset="65%" stop-color="#3b2f18" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#120f14" stop-opacity="1"/>
+            </radialGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.2" result="b"/>
+              <feMerge>
+                <feMergeNode in="b"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <rect x="6" y="6" width="84" height="84" rx="18" fill="url(#g)" stroke="#7a6340" stroke-width="2"/>
+          <path d="M20 60 C34 38, 62 38, 76 60" fill="none" stroke="#cbb57a" stroke-width="3" opacity="0.9" filter="url(#glow)"/>
+          <path d="M28 32 L48 72 L68 32" fill="none" stroke="#cbb57a" stroke-width="3" opacity="0.8"/>
+          <circle cx="48" cy="46" r="7" fill="#0e0b10" stroke="#cbb57a" stroke-width="2" opacity="0.9"/>
+          <text x="48" y="89" text-anchor="middle" font-family="serif" font-size="10" fill="#cbb57a" opacity="0.75">${safe}</text>
+        </svg>
+      `.trim();
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    function setTitle(key) {
+      const titleWeapon = document.querySelector("#contentTitle .title-weapon");
+      const titleIcon = document.querySelector("#contentTitle .title-icon");
+
+      if (!key) {
+        titleWeapon.textContent = "Światło bogów zgasło, a z ciemności wyłonił się nienasycony głód. Słyszysz to? To nie jest wiatr – to tupot tysiąca stóp i charkot istot, które nie znają litości. Horda jest już u bram.";
+        titleIcon.style.display = "none";
+        return;
+      }
+
+      const niceName = key.charAt(0).toUpperCase() + key.slice(1);
+      titleWeapon.textContent = niceName;
+
+      titleIcon.style.display = "inline-block";
+
+      // Jeśli masz własną ikonę dla tego key -> użyj jej. Jeśli nie -> domyślna runa.
+      if (TITLE_ICONS[key]) {
+        titleIcon.style.backgroundImage = `url("${TITLE_ICONS[key]}")`;
+      } else {
+        titleIcon.style.backgroundImage = `url("${makeTitleRuneUri(key)}")`;
+      }
+    }
+
+    function renderSkills(key) {
+      const subtitleEl = document.getElementById("contentSubtitle");
+      const grid = document.getElementById("skillsGrid");
+
+      const skills = ICONS[key];
+      if (!skills) return;
+
+      setTitle(key);
+
+      // TU JEST ZMIANA: opis zależny od key (z DESCRIPTIONS)
+      subtitleEl.textContent = DESCRIPTIONS[key] || "Najedź na ikonę/kafelek, aby przeczytać opis.";
+
+      grid.innerHTML = "";
+
+      skills.forEach((s, idx) => {
+        const card = document.createElement("button");
+        card.className = "skill-card";
+        card.type = "button";
+        card.setAttribute("data-tooltip", s.desc);
+        card.setAttribute("aria-label", `${s.name}: ${s.desc}`);
+
+        const img = document.createElement("img");
+        img.className = "skill-icon";
+        img.src = s.icon ? s.icon : makeIconDataUri(`${key} ${idx + 1}`);
+        img.alt = s.name;
+
+        const name = document.createElement("div");
+        name.className = "skill-name";
+        name.textContent = s.name;
+
+        card.appendChild(img);
+        card.appendChild(name);
+
+        card.addEventListener("click", () => {
+          document.querySelectorAll(".skill-card").forEach(x => x.classList.remove("active"));
+          card.classList.add("active");
+        });
+
+        grid.appendChild(card);
+      });
+
+      wireTooltips();
+    }
+
+    // ===== Tooltip (fixed, clamp + safe-left) =====
+    const tooltipEl = document.getElementById("dfTooltip");
+    const tooltipTextEl = document.getElementById("dfTooltipText");
+
+    let activeTarget = null;
+    let rafId = null;
+
+    function getSidebarSafeLeft() {
+      const sidebar = document.querySelector(".sidebar");
+      const isMobile = window.matchMedia("(max-width: 920px)").matches;
+      if (!sidebar || isMobile) return 8;
+
+      const rectSidebar = sidebar.getBoundingClientRect();
+      const gap = 18;
+      return Math.max(8, rectSidebar.right + gap);
+    }
+
+    function showTooltip(target) {
+      const text = target.getAttribute("data-tooltip");
+      if (!text) return;
+
+      activeTarget = target;
+      tooltipTextEl.textContent = text;
+
+      tooltipEl.setAttribute("aria-hidden", "false");
+      tooltipEl.classList.add("is-visible");
+
+      positionTooltip();
+      window.addEventListener("scroll", positionTooltip, true);
+      window.addEventListener("resize", positionTooltip);
+    }
+
+    function hideTooltip() {
+      activeTarget = null;
+      tooltipEl.classList.remove("is-visible");
+      tooltipEl.setAttribute("aria-hidden", "true");
+
+      window.removeEventListener("scroll", positionTooltip, true);
+      window.removeEventListener("resize", positionTooltip);
+
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+
+    function positionTooltip() {
+      if (!activeTarget) return;
+
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const targetRect = activeTarget.getBoundingClientRect();
+
+        tooltipEl.style.left = "0px";
+        tooltipEl.style.top = "0px";
+        tooltipEl.style.maxWidth = "280px";
+
+        const safeLeft = getSidebarSafeLeft();
+        const tipRect = tooltipEl.getBoundingClientRect();
+
+        let top = targetRect.top - tipRect.height - 12;
+        let arrowMode = "down";
+
+        if (top < 8) {
+          top = targetRect.bottom + 12;
+          arrowMode = "up";
+        }
+
+        let left = targetRect.left + (targetRect.width / 2) - (tipRect.width / 2);
+
+        const minLeft = safeLeft;
+        const maxLeft = window.innerWidth - tipRect.width - 8;
+        left = Math.min(Math.max(left, minLeft), maxLeft);
+
+        tooltipEl.style.left = `${left}px`;
+        tooltipEl.style.top = `${top}px`;
+        tooltipEl.setAttribute("data-arrow", arrowMode);
+
+        const centerX = targetRect.left + targetRect.width / 2;
+        const arrowX = Math.min(Math.max(centerX - left, 18), tipRect.width - 18);
+        tooltipEl.style.setProperty("--arrow-x", `${arrowX}px`);
+      });
+    }
+
+    function wireTooltips() {
+      document.querySelectorAll(".skill-card[data-tooltip]").forEach(card => {
+        card.onmouseenter = null;
+        card.onmouseleave = null;
+        card.onfocus = null;
+        card.onblur = null;
+        card.onmousemove = null;
+
+        card.addEventListener("mouseenter", () => showTooltip(card));
+        card.addEventListener("mouseleave", hideTooltip);
+        card.addEventListener("focus", () => showTooltip(card));
+        card.addEventListener("blur", hideTooltip);
+        card.addEventListener("mousemove", () => positionTooltip());
+      });
+    }
+
+    // Klik w submenu -> render
+    document.querySelectorAll(".submenu-item").forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        const key = item.getAttribute("data-weapon");
+        renderSkills(key);
+
+        document.querySelectorAll(".submenu-item").forEach(x => x.classList.remove("is-active"));
+        item.classList.add("is-active");
+      });
+    });
+
+    // Rok
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Start
+    setTitle(null);
+    wireTooltips();
+  </script>
+</body>
+</html>
